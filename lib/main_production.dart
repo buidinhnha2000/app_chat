@@ -12,7 +12,6 @@ void main() {
 
   final serviceLocator = ServiceLocator.instance;
   serviceLocator.registerSingleton(dioClient);
-  serviceLocator.configureNetworkModule(AppFlavor.production);
 
   bootstrap();
 }

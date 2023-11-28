@@ -1,4 +1,4 @@
-package com.napaglobal.flutter_bloc_base_source_code
+package com.bdnha.chat
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,14 +1,5 @@
 import 'package:get_it/get_it.dart';
 
-import '../app_flavor.dart';
-import '../data/remote/apis/auth/example_auth_api.dart';
-import '../data/remote/data_sources/example/example_data_source.dart';
-import '../data/remote/data_sources/example/example_repository_impl.dart';
-import '../data/remote/dio.dart';
-import '../domain/repositories/example_repository.dart';
-
-part 'network_module.dart';
-
 class ServiceLocator {
   ServiceLocator._();
 
