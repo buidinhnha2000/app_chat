@@ -88,7 +88,7 @@ class HomeChatHorizontal extends StatelessWidget {
                           width: 16,
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: context.theme.colorScheme.onPrimary),
                           child: Center(
-                            child: Icon(Icons.add, size: 12, color: context.theme.colorScheme.background),
+                            child: Icon(Icons.add, size: 12, color: colorMy),
                           ),
                         ),
                       ),
@@ -149,7 +149,7 @@ class HomeChatHorizontal extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(users[index].name, overflow: TextOverflow.ellipsis, maxLines: 1),
+                        Text(users[index].name, overflow: TextOverflow.ellipsis, maxLines: 1, style: TextStyle(color: context.theme.colorScheme.onPrimary),),
                       ],
                     ),
                   ),

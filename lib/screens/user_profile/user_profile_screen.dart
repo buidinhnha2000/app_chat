@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../../common/extensions/context.dart';
 import '../../common/resources/app_icon.dart';
 import '../../common/widgets/svg_button.dart';
+import '../../models/arguments/call_argument.dart';
 import '../../models/model_class/icons.dart';
 import '../../models/user/user.dart';
+import '../../navigation/navigation.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key, required this.userProfile});
@@ -40,43 +42,47 @@ class UserProfileScreen extends StatelessWidget {
                 Container(
                   width: 82,
                   height: 82,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(29),
-                  ),
-                  child: ClipOval(
-                    child: Image.network(userProfile.image, fit: BoxFit.fill),
-                  ),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(29)),
+                  child: ClipOval(child: Image.network(userProfile.image, fit: BoxFit.fill)),
                 ),
                 const SizedBox(height: 12),
                 Text(userProfile.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
                 const SizedBox(height: 8),
                 Text(userProfile.email, style: const TextStyle(fontSize: 12, color: Colors.white54)),
                 Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 24),
-                    height: 44,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(
-                        icons.length,
-                        (index) => Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          // Adjust the spacing between items as needed
-                          height: 44,
-                          width: 44,
-                          decoration:
-                              BoxDecoration(color: Colors.greenAccent.shade700.withOpacity(0.2), borderRadius: BorderRadius.circular(22)),
-                          child: SvgButton(
-                            icons[index].icons,
-                            color: Colors.white,
-                            onTap: () {
-                              if(index == 0) {
-                                context.navigator.pop();
-                              }
-                            },
-                          ),
+                  margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 24),
+                  height: 44,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(
+                      icons.length,
+                      (index) => Container(
+                        margin: const EdgeInsets.only(right: 8),
+                        height: 44,
+                        width: 44,
+                        decoration: BoxDecoration(
+                          color: Colors.greenAccent.shade700.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(22),
+                        ),
+                        child: SvgButton(
+                          icons[index].icons,
+                          color: Colors.white,
+                          onTap: () {
+                            if (index == 0) {
+                              context.navigator.pop();
+                            } else if (index == 1) {
+                              context.navigator
+                                  .pushNamed(AppRoutes.callIncoming, arguments: CallArgument(user: userProfile, isCallVideo: true));
+                            } else if (index == 2) {
+                              context.navigator
+                                  .pushNamed(AppRoutes.callIncoming, arguments: CallArgument(user: userProfile, isCallVideo: false));
+                            }
+                          },
                         ),
                       ),
-                    )),
+                    ),
+                  ),
+                ),
               ],
             ),
             Expanded(

@@ -23,18 +23,19 @@ class HomeChatAppBar extends StatelessWidget {
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22), border: Border.all(color: context.theme.colorScheme.primaryContainer, width: 2)),
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(color: context.theme.colorScheme.onPrimary.withOpacity(0.2), width: 2)),
             child: Center(
               child: SvgButton(
                 AppIcons.iconSearch,
-                color: Colors.white,
+                color: context.theme.colorScheme.onPrimary,
                 onTap: () => context.navigator.pushNamed(AppRoutes.search),
               ),
             ),
           ),
           Text(
             'Home',
-            style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
+            style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600, color: context.theme.colorScheme.onPrimary),
           ),
           GestureDetector(
             onTap: () => context.navigator.pushNamed(AppRoutes.profile, arguments: user),
@@ -42,12 +43,9 @@ class HomeChatAppBar extends StatelessWidget {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: context.theme.colorScheme.primaryContainer, width: 2),
-              ),
-              child: ClipOval(
-                child: Image.network(user.image, fit: BoxFit.fill),
-              ),
+                  borderRadius: BorderRadius.circular(22),
+                  border: Border.all(color: context.theme.colorScheme.onPrimary.withOpacity(0.4), width: 2),
+                  image: user.image.isNotEmpty ? DecorationImage(image: NetworkImage(user.image), fit: BoxFit.fill) : null),
             ),
           )
         ],

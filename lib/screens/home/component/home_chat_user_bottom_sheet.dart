@@ -22,7 +22,7 @@ class HomeChatUserBottomSheet extends StatelessWidget {
               margin: const EdgeInsets.only(top: 16, bottom: 10),
               height: 3,
               width: 30,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: context.theme.colorScheme.background),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: context.theme.colorScheme.primary),
             ),
           ),
           ListTile(
@@ -31,11 +31,11 @@ class HomeChatUserBottomSheet extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.add_box_outlined, color: context.theme.colorScheme.background),
+                Icon(Icons.add_box_outlined, color: context.theme.colorScheme.primary),
                 const SizedBox(width: 10),
                 Text(
                   'Add',
-                  style: context.textTheme.titleMedium?.copyWith(color: context.theme.colorScheme.background, fontWeight: FontWeight.w600),
+                  style: context.textTheme.titleMedium?.copyWith(color: context.theme.colorScheme.primary, fontWeight: FontWeight.w600),
                 )
               ],
             ),
@@ -46,11 +46,11 @@ class HomeChatUserBottomSheet extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.create_outlined, color: context.theme.colorScheme.background),
+                Icon(Icons.create_outlined, color: context.theme.colorScheme.primary),
                 const SizedBox(width: 10),
                 Text(
                   'Create',
-                  style: context.textTheme.titleMedium?.copyWith(color: context.theme.colorScheme.background, fontWeight: FontWeight.w600),
+                  style: context.textTheme.titleMedium?.copyWith(color: context.theme.colorScheme.primary, fontWeight: FontWeight.w600),
                 )
               ],
             ),
@@ -61,11 +61,11 @@ class HomeChatUserBottomSheet extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.delete_outline_outlined, color: context.theme.colorScheme.background),
+                Icon(Icons.delete_outline_outlined, color: context.theme.colorScheme.primary),
                 const SizedBox(width: 10),
                 Text(
                   'Delete',
-                  style: context.textTheme.titleMedium?.copyWith(color: context.theme.colorScheme.background, fontWeight: FontWeight.w600),
+                  style: context.textTheme.titleMedium?.copyWith(color: context.theme.colorScheme.primary, fontWeight: FontWeight.w600),
                 )
               ],
             ),

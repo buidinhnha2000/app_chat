@@ -21,7 +21,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   void initState() {
-    context.read<ChatProvider>().getSearch('');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ChatProvider>().getSearch('');
+    });
     super.initState();
   }
 
@@ -103,7 +105,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       Text(
                                         usersSearch[index].name,
                                         style: context.textTheme.titleLarge?.copyWith(
-                                          color: context.theme.colorScheme.background,
+                                          color: context.theme.colorScheme.primary,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
@@ -111,7 +113,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       Text(
                                         'You: How are you today?',
                                         style: context.textTheme.bodyMedium?.copyWith(
-                                          color: context.theme.colorScheme.background.withOpacity(0.5),
+                                          color: context.theme.colorScheme.primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ],
@@ -125,7 +127,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   Text(
                                     '2 min ago',
                                     style: context.textTheme.bodyMedium?.copyWith(
-                                      color: context.theme.colorScheme.background.withOpacity(0.5),
+                                      color: context.theme.colorScheme.primary.withOpacity(0.5),
                                     ),
                                   ),
                                   Container(
@@ -166,9 +168,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         fillColor: context.theme.colorScheme.secondary,
                         filled: true,
                       ),
-                      style: TextStyle(color: context.theme.colorScheme.background),
+                      style: TextStyle(color: context.theme.colorScheme.primary),
                       onChanged: (value) {
-                         Provider.of<ChatProvider>(context, listen: false).getSearch(value);
+                        Provider.of<ChatProvider>(context, listen: false).getSearch(value);
                       },
                     ),
                   ),

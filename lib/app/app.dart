@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../common/extensions/context.dart';
+import '../data/api_firebase/app_provider.dart';
 import '../data/api_firebase/chat_provider.dart';
+import '../data/api_firebase/dice_provider.dart';
 import '../l10n/l10n.dart';
 import '../navigation/navigation.dart';
 import '../theme/theme.dart';
@@ -14,6 +15,8 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ChatProvider()),
+        ChangeNotifierProvider(create: (_) => AppProvider()),
+        ChangeNotifierProvider(create: (_) => DiceProvider()),
       ],
       child: const AppView(),
     );
@@ -25,16 +28,20 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme.brightness;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: theme == Brightness.light ? ThemeMode.light : ThemeMode.dark,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      onGenerateRoute: AppNavigation.onGeneratedRoute,
-      initialRoute: AppRoutes.home,
+    return Consumer<ChatProvider>(
+      builder: (context, data, child) {
+        final darkMode = data.darkMode;
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          onGenerateRoute: AppNavigation.onGeneratedRoute,
+          initialRoute: AppRoutes.home,
+        );
+      },
     );
   }
 }

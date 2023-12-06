@@ -19,7 +19,7 @@ class HomeChatVertical extends StatelessWidget {
       child: ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(40)),
         child: Container(
-          color: context.theme.colorScheme.onPrimary,
+          color: context.theme.colorScheme.background,
           child: ListView(
             physics: const AlwaysScrollableScrollPhysics(),
             children: [
@@ -28,7 +28,7 @@ class HomeChatVertical extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 14, bottom: 24),
                   height: 3,
                   width: 30,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: context.theme.colorScheme.background),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: context.theme.colorScheme.primary),
                 ),
               ),
               ListView.builder(
@@ -97,7 +97,7 @@ class HomeChatVertical extends StatelessWidget {
                                   Text(
                                     users[index].name,
                                     style: context.textTheme.titleLarge?.copyWith(
-                                      color: context.theme.colorScheme.background,
+                                      color: context.theme.colorScheme.primary,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -105,7 +105,7 @@ class HomeChatVertical extends StatelessWidget {
                                   Text(
                                     'You: How are you today?',
                                     style: context.textTheme.bodyMedium?.copyWith(
-                                      color: context.theme.colorScheme.background.withOpacity(0.5),
+                                      color: context.theme.colorScheme.primary.withOpacity(0.5),
                                     ),
                                   ),
                                 ],
@@ -119,7 +119,7 @@ class HomeChatVertical extends StatelessWidget {
                               Text(
                                 '2 min ago',
                                 style: context.textTheme.bodyMedium?.copyWith(
-                                  color: context.theme.colorScheme.background.withOpacity(0.5),
+                                  color: context.theme.colorScheme.primary.withOpacity(0.5),
                                 ),
                               ),
                               Container(

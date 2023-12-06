@@ -21,4 +21,14 @@ abstract class AppIcons {
   static const iconQr = '$iconAssetPath/icon_qr.svg';
   static const iconMore = '$iconAssetPath/icon_more.svg';
   static const iconRemove = '$iconAssetPath/icon_remove.svg';
+  static const iconVolume = '$iconAssetPath/icon_volume.svg';
+  static const iconImage = '$iconAssetPath/icon_image.svg';
+  static const iconLike = '$iconAssetPath/icon_like.svg';
+  static const iconFavorite = '$iconAssetPath/icon_favorite.svg';
+  static const iconCancel = '$iconAssetPath/icon_cancel.svg';
+  static const iconNext = '$iconAssetPath/icon_next.svg';
+  static const iconHome = '$iconAssetPath/icon_home.svg';
+  static const iconDice = '$iconAssetPath/icon_dice.svg';
+  static const iconGame = '$iconAssetPath/icon_game.svg';
+  static const iconLinear = '$iconAssetPath/icon_linear.svg';
 }

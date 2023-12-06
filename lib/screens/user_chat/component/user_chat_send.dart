@@ -1,3 +1,4 @@
+import 'user_chat_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../common/extensions/context.dart';
 import '../../../common/extensions/date_time.dart';
 import '../../../common/resources/app_icon.dart';
+import '../../../common/widgets/bottom_sheet.dart';
 import '../../../common/widgets/svg_button.dart';
 import '../../../data/api_firebase/chat_provider.dart';
 import '../../../models/message/message.dart';
@@ -21,7 +23,7 @@ class UserChatSend extends StatefulWidget {
 }
 
 class _UserChatSendState extends State<UserChatSend> {
-  final _textController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
   List<XFile> images = [];
 
   Future<void> _pickImage(BuildContext context, Function(List<XFile> image) onSuccess) async {
@@ -45,17 +47,30 @@ class _UserChatSendState extends State<UserChatSend> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Divider(color: context.theme.colorScheme.secondary, thickness: 2),
+        Divider(color: context.theme.colorScheme.secondary.withOpacity(0.6), thickness: 2, height: 0),
         Container(
-          height: 90,
-          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+          height: 70,
+          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
           child: SizedBox(
             height: 40,
             child: Row(
               children: [
                 SvgButton(
                   AppIcons.iconGiff,
-                  onTap: () {},
+                  color: context.theme.colorScheme.primary,
+                  onTap: () => BottomSheetChat.show(
+                    context,
+                    child: BottomSheetTopicMessage(
+                      onTopic: (value) {
+                        context.read<ChatProvider>().setTopicMessage('1', widget.user.id, value);
+                        context.navigator.pop();
+                      },
+                      onDeleteTopic: () {
+                        context.read<ChatProvider>().deleteTopicMessage();
+                        context.navigator.pop();
+                      },
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: SizedBox(
@@ -76,14 +91,14 @@ class _UserChatSendState extends State<UserChatSend> {
                         fillColor: context.theme.colorScheme.secondary,
                         filled: true,
                       ),
-                      style: TextStyle(color: context.theme.colorScheme.background),
-                      onChanged: (value) => setState(() => _textController.text = value),
+                      style: TextStyle(color: context.theme.colorScheme.primary),
                     ),
                   ),
                 ),
                 SvgButton(
                   AppIcons.iconCamera,
                   size: 24,
+                  color: context.theme.colorScheme.primary,
                   onTap: () {
                     widget.focusNode.unfocus();
                     _takeImage(context, (image) => image);
@@ -96,10 +111,10 @@ class _UserChatSendState extends State<UserChatSend> {
                       borderRadius: BorderRadius.circular(40),
                       color: _textController.text.isNotEmpty
                           ? context.theme.colorScheme.secondaryContainer
-                          : context.theme.colorScheme.background.withOpacity(0.3)),
+                          : context.theme.colorScheme.onSecondaryContainer.withOpacity(0.3)),
                   child: SvgButton(
                     AppIcons.iconSend,
-                    color: context.theme.colorScheme.onBackground,
+                    color: Colors.white,
                     size: 24,
                     onTap: _textController.text.isNotEmpty
                         ? () {
