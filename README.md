@@ -1,5 +1,5 @@
 [![Dart](https://github.com/Napa-Mobile/flutter-bloc-base-source-code/actions/workflows/dart.yml/badge.svg)](https://github.com/Napa-Mobile/flutter-bloc-base-source-code/actions/workflows/dart.yml)
-# flutter-bloc-base-source-code
+# app chat
 
 ## Setup
 ```sh
